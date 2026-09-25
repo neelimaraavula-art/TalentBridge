@@ -1,0 +1,2126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TalentBridge AI</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- =====================================================
+     LOGIN
+===================================================== -->
+
+<section id="loginPage" class="auth-page">
+
+    <div class="auth-left">
+
+        <div class="brand">
+            <div class="brand-icon">TB</div>
+
+            <div>
+                <h2>TalentBridge <span>AI</span></h2>
+                <small>Skill-Capacity Workforce Network</small>
+            </div>
+        </div>
+
+        <div class="hero-text">
+
+            <div class="ai-badge">
+                ✦ AI POWERED WORKFORCE PLANNING
+            </div>
+
+            <h1>
+                Turn skill gaps into
+                <span>project capacity.</span>
+            </h1>
+
+            <p>
+                Match project demand with the right skills,
+                available workforce and emerging talent —
+                before capability gaps become delivery risks.
+            </p>
+
+            <div class="hero-points">
+                <div>✓ Skill-based workforce matching</div>
+                <div>✓ AI-powered candidate discovery</div>
+                <div>✓ Intelligent interviews</div>
+                <div>✓ Attrition risk replacement</div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="auth-right">
+
+        <div class="login-card">
+
+            <div class="mobile-logo">
+                <div class="brand-icon">TB</div>
+                <h2>TalentBridge AI</h2>
+            </div>
+
+            <h1>Welcome back</h1>
+
+            <p class="muted">
+                Sign in to access your workforce network.
+            </p>
+
+
+            <div class="role-selector">
+
+                <button
+                    class="role-btn active"
+                    onclick="selectLoginRole('admin', this)">
+                    🛡️
+                    <span>Company Admin</span>
+                </button>
+
+                <button
+                    class="role-btn"
+                    onclick="selectLoginRole('talent', this)">
+                    👤
+                    <span>Talent</span>
+                </button>
+
+            </div>
+
+
+            <form onsubmit="login(event)">
+
+                <label>Email</label>
+
+                <input
+                    type="email"
+                    id="loginEmail"
+                    placeholder="you@company.com"
+                    required
+                >
+
+
+                <label>Password</label>
+
+                <div class="password-box">
+
+                    <input
+                        type="password"
+                        id="loginPassword"
+                        placeholder="Enter password"
+                        required
+                    >
+
+                    <button
+                        type="button"
+                        onclick="togglePassword()">
+                        👁
+                    </button>
+
+                </div>
+
+
+                <button class="primary-btn full-btn">
+                    SIGN IN →
+                </button>
+
+            </form>
+
+
+            <div class="demo-login">
+
+                <strong>Demo Mode</strong>
+
+                <p>
+                    Any email + any password works.
+                </p>
+
+                <p>
+                    Select Admin or Talent before login.
+                </p>
+
+            </div>
+
+
+            <div class="register-line">
+
+                Don't have a talent profile?
+
+                <button onclick="showRegistration()">
+                    Register as Talent
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     TALENT REGISTRATION
+===================================================== -->
+
+<section id="registrationPage" class="auth-page hidden">
+
+    <div class="registration-card">
+
+        <div class="registration-header">
+
+            <button
+                class="back-btn"
+                onclick="showLogin()">
+                ← Back to Login
+            </button>
+
+
+            <div class="brand">
+
+                <div class="brand-icon">TB</div>
+
+                <div>
+                    <h2>TalentBridge <span>AI</span></h2>
+                    <small>Join the talent network</small>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="registration-title">
+
+            <div class="ai-badge">
+                ✦ BUILD YOUR SKILL PROFILE
+            </div>
+
+            <h1>Make your skills discoverable.</h1>
+
+            <p>
+                Create a structured talent profile so companies
+                can discover you when your skills match their projects.
+            </p>
+
+        </div>
+
+
+        <form
+            id="talentForm"
+            onsubmit="registerTalent(event)">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label>Full Name</label>
+
+                    <input
+                        id="talentName"
+                        required
+                        placeholder="e.g. Priya Sharma">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Email</label>
+
+                    <input
+                        id="talentEmail"
+                        type="email"
+                        required
+                        placeholder="you@email.com">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Experience</label>
+
+                    <select id="talentExperience">
+
+                        <option>Fresher</option>
+                        <option>1 - 2 years</option>
+                        <option>2 - 4 years</option>
+                        <option>4+ years</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Availability</label>
+
+                    <select id="talentAvailability">
+
+                        <option>Immediate</option>
+                        <option>15 Days</option>
+                        <option>30 Days</option>
+                        <option>60 Days</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group full">
+
+                    <label>Primary Role</label>
+
+                    <input
+                        id="talentRole"
+                        required
+                        placeholder="e.g. Backend Developer">
+
+                </div>
+
+
+                <div class="form-group full">
+
+                    <label>
+                        Skills
+                        <span class="label-hint">
+                            Select all that apply
+                        </span>
+                    </label>
+
+
+                    <div class="skill-options">
+
+                        <label class="skill-option">
+                            <input type="checkbox" value="Python">
+                            <span>Python</span>
+                        </label>
+
+                        <label class="skill-option">
+                            <input type="checkbox" value="FastAPI">
+                            <span>FastAPI</span>
+                        </label>
+
+                        <label class="skill-option">
+                            <input type="checkbox" value="React">
+                            <span>React</span>
+                        </label>
+
+                        <label class="skill-option">
+                            <input type="checkbox" value="AWS">
+                            <span>AWS</span>
+                        </label>
+
+                        <label class="skill-option">
+                            <input type="checkbox" value="Java">
+                            <span>Java</span>
+                        </label>
+
+                        <label class="skill-option">
+                            <input type="checkbox" value="Node.js">
+                            <span>Node.js</span>
+                        </label>
+
+                        <label class="skill-option">
+                            <input type="checkbox" value="SQL">
+                            <span>SQL</span>
+                        </label>
+
+                        <label class="skill-option">
+                            <input type="checkbox" value="Data Science">
+                            <span>Data Science</span>
+                        </label>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="profile-note">
+
+                🔐 Your profile will be visible to authorized
+                company workforce teams for project matching.
+
+            </div>
+
+
+            <button class="primary-btn full-btn">
+
+                CREATE TALENT PROFILE →
+
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ADMIN DASHBOARD
+===================================================== -->
+
+<section id="adminDashboard" class="dashboard hidden">
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+
+            <div class="brand-icon">TB</div>
+
+            <div>
+                <strong>TalentBridge</strong>
+                <small>AI Workforce</small>
+            </div>
+
+        </div>
+
+
+        <div class="sidebar-menu">
+
+            <p class="menu-label">WORKSPACE</p>
+
+
+            <button
+                class="side-btn active"
+                onclick="adminSection('overview', this)">
+                <span>▦</span>
+                Overview
+            </button>
+
+
+            <button
+                class="side-btn"
+                onclick="adminSection('projects', this)">
+                <span>◈</span>
+                Projects
+            </button>
+
+
+            <button
+                class="side-btn"
+                onclick="adminSection('talent', this)">
+                <span>♙</span>
+                Talent Network
+            </button>
+
+
+            <button
+                class="side-btn"
+                onclick="adminSection('gaps', this)">
+                <span>△</span>
+                Skill Gaps
+            </button>
+
+
+            <button
+                class="side-btn"
+                onclick="adminSection('activity', this)">
+                <span>◷</span>
+                Audit Trail
+            </button>
+
+
+            <button
+                class="side-btn"
+                onclick="openAgent()">
+                <span>✦</span>
+                AI Agent
+            </button>
+
+        </div>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="ai-status">
+
+                <div class="status-dot"></div>
+
+                <div>
+                    <strong>AI Workforce Agent</strong>
+                    <small>System operational</small>
+                </div>
+
+            </div>
+
+
+            <button
+                class="logout-btn"
+                onclick="logout()">
+                ↪ Logout
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div>
+
+                <span class="page-kicker">
+                    COMPANY WORKFORCE
+                </span>
+
+                <h2 id="adminPageTitle">
+                    Workforce Overview
+                </h2>
+
+            </div>
+
+
+            <div class="top-actions">
+
+                <div
+                    class="notification"
+                    onclick="showNotifications()">
+
+                    🔔
+
+                    <span id="notificationCount">3</span>
+
+                </div>
+
+
+                <div class="admin-profile">
+
+                    <div class="avatar">AD</div>
+
+                    <div>
+                        <strong id="adminName">
+                            Admin
+                        </strong>
+
+                        <small>
+                            Workforce Manager
+                        </small>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- ADMIN OVERVIEW -->
+
+        <section
+            id="adminOverview"
+            class="dashboard-section">
+
+            <div class="welcome-banner">
+
+                <div>
+
+                    <div class="ai-badge light">
+                        ✦ AI WORKFORCE INTELLIGENCE
+                    </div>
+
+                    <h1>
+                        Know your capacity
+                        <span>before the project starts.</span>
+                    </h1>
+
+                    <p>
+                        TalentBridge continuously compares
+                        project demand with workforce capability.
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="primary-btn"
+                    onclick="openProjectModal()">
+                    + New Project
+                </button>
+
+            </div>
+
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon purple">
+                        ♙
+                    </div>
+
+                    <div>
+                        <span>Total Talent</span>
+                        <strong>248</strong>
+                        <small class="positive">
+                            ↑ 12% this month
+                        </small>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon teal">
+                        ◈
+                    </div>
+
+                    <div>
+                        <span>Active Projects</span>
+                        <strong id="activeProjectCount">18</strong>
+                        <small>6 starting soon</small>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card warning-card">
+
+                    <div class="stat-icon orange">
+                        △
+                    </div>
+
+                    <div>
+                        <span>Skill Gaps</span>
+                        <strong id="gapCount">31</strong>
+                        <small class="warning">
+                            Needs attention
+                        </small>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon red">
+                        !
+                    </div>
+
+                    <div>
+                        <span>At Risk</span>
+                        <strong>7</strong>
+                        <small class="danger">
+                            3 critical
+                        </small>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="dashboard-grid">
+
+                <div class="panel large-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <span class="panel-kicker">
+                                CAPABILITY MAP
+                            </span>
+
+                            <h3>
+                                Current Skill Capacity
+                            </h3>
+
+                        </div>
+
+                        <button
+                            class="ghost-btn"
+                            onclick="adminSection('gaps')">
+                            View details →
+                        </button>
+
+                    </div>
+
+
+                    <div class="skill-bars">
+
+                        <div class="skill-row">
+                            <div>
+                                <strong>Python</strong>
+                                <span>27 / 30 capacity</span>
+                            </div>
+
+                            <div class="progress">
+                                <i style="width:90%"></i>
+                            </div>
+
+                            <b>90%</b>
+                        </div>
+
+
+                        <div class="skill-row">
+                            <div>
+                                <strong>React</strong>
+                                <span>24 / 24 capacity</span>
+                            </div>
+
+                            <div class="progress">
+                                <i style="width:100%"></i>
+                            </div>
+
+                            <b>100%</b>
+                        </div>
+
+
+                        <div class="skill-row">
+                            <div>
+                                <strong>AWS</strong>
+                                <span>12 / 20 capacity</span>
+                            </div>
+
+                            <div class="progress">
+                                <i style="width:60%"></i>
+                            </div>
+
+                            <b>60%</b>
+                        </div>
+
+
+                        <div class="skill-row">
+                            <div>
+                                <strong>FastAPI</strong>
+                                <span>8 / 20 capacity</span>
+                            </div>
+
+                            <div class="progress">
+                                <i style="width:40%"></i>
+                            </div>
+
+                            <b>40%</b>
+                        </div>
+
+
+                        <div class="skill-row">
+                            <div>
+                                <strong>Data Science</strong>
+                                <span>15 / 25 capacity</span>
+                            </div>
+
+                            <div class="progress">
+                                <i style="width:60%"></i>
+                            </div>
+
+                            <b>60%</b>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <span class="panel-kicker">
+                                AI ALERTS
+                            </span>
+
+                            <h3>
+                                Workforce Signals
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="alert-list">
+
+                        <div
+                            class="alert-item critical"
+                            onclick="adminSection('gaps')">
+
+                            <div>!</div>
+
+                            <section>
+
+                                <strong>
+                                    AWS capacity gap
+                                </strong>
+
+                                <span>
+                                    3 projects affected
+                                </span>
+
+                            </section>
+
+                        </div>
+
+
+                        <div
+                            class="alert-item warning"
+                            onclick="simulateAttrition()">
+
+                            <div>△</div>
+
+                            <section>
+
+                                <strong>
+                                    Attrition risk detected
+                                </strong>
+
+                                <span>
+                                    2 replacements required
+                                </span>
+
+                            </section>
+
+                        </div>
+
+
+                        <div
+                            class="alert-item success">
+
+                            <div>✓</div>
+
+                            <section>
+
+                                <strong>
+                                    Python gap resolved
+                                </strong>
+
+                                <span>
+                                    Candidate assigned
+                                </span>
+
+                            </section>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <span class="panel-kicker">
+                            RECENT ACTIVITY
+                        </span>
+
+                        <h3>
+                            AI Workforce Decisions
+                        </h3>
+
+                    </div>
+
+                    <button
+                        class="ghost-btn"
+                        onclick="adminSection('activity')">
+                        View audit trail →
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="adminActivityTable"
+                    class="activity-table">
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ADMIN PROJECTS -->
+
+        <section
+            id="adminProjects"
+            class="dashboard-section hidden">
+
+            <div class="section-intro">
+
+                <div>
+
+                    <span class="panel-kicker">
+                        PROJECT DEMAND
+                    </span>
+
+                    <h1>
+                        Projects & Staffing
+                    </h1>
+
+                    <p>
+                        Define project skill requirements and
+                        identify capability gaps.
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="primary-btn"
+                    onclick="openProjectModal()">
+                    + Create Project
+                </button>
+
+            </div>
+
+
+            <div
+                id="projectList"
+                class="project-grid">
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ADMIN TALENT -->
+
+        <section
+            id="adminTalent"
+            class="dashboard-section hidden">
+
+            <div class="section-intro">
+
+                <div>
+
+                    <span class="panel-kicker">
+                        TALENT NETWORK
+                    </span>
+
+                    <h1>
+                        Available Talent
+                    </h1>
+
+                    <p>
+                        Search skill profiles and AI matches.
+                    </p>
+
+                </div>
+
+
+                <div class="search-box">
+
+                    🔎
+
+                    <input
+                        id="talentSearch"
+                        oninput="searchTalent()"
+                        placeholder="Search skills or names...">
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="talentList"
+                class="talent-grid">
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ADMIN GAPS -->
+
+        <section
+            id="adminGaps"
+            class="dashboard-section hidden">
+
+            <div class="section-intro">
+
+                <div>
+
+                    <span class="panel-kicker">
+                        CAPABILITY INTELLIGENCE
+                    </span>
+
+                    <h1>
+                        Skill Gap Resolution
+                    </h1>
+
+                    <p>
+                        AI-identified workforce gaps.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="gap-list">
+
+                <div class="gap-card critical-gap">
+
+                    <div class="gap-main">
+
+                        <div class="gap-icon">
+                            !
+                        </div>
+
+                        <div>
+                            <h3>AWS Cloud Engineer</h3>
+                            <p>
+                                Banking AI Platform
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div>
+                        <strong>Required: 1</strong>
+                        <span>Available: 0</span>
+                    </div>
+
+
+                    <span class="badge danger-badge">
+                        HIGH RISK
+                    </span>
+
+
+                    <button
+                        class="primary-btn small-btn"
+                        onclick="runAIAnalysis('AWS Cloud Engineer')">
+                        Resolve with AI
+                    </button>
+
+                </div>
+
+
+                <div class="gap-card warning-gap">
+
+                    <div class="gap-main">
+
+                        <div class="gap-icon">
+                            △
+                        </div>
+
+                        <div>
+                            <h3>FastAPI Developer</h3>
+                            <p>
+                                Banking AI Platform
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div>
+                        <strong>Required: 2</strong>
+                        <span>Available: 0</span>
+                    </div>
+
+
+                    <span class="badge warning-badge">
+                        MEDIUM
+                    </span>
+
+
+                    <button
+                        class="primary-btn small-btn"
+                        onclick="runAIAnalysis('FastAPI Developer')">
+                        Resolve with AI
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="panel attrition-panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <span class="panel-kicker">
+                            FAILURE / RECOVERY DEMO
+                        </span>
+
+                        <h3>
+                            Simulate Employee Attrition
+                        </h3>
+                    </div>
+
+                </div>
+
+
+                <p class="muted">
+                    Demonstrate how the AI agent reacts when
+                    a critical employee leaves a project.
+                </p>
+
+
+                <button
+                    class="primary-btn"
+                    onclick="simulateAttrition()">
+                    ⚠ Simulate Attrition Event
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ADMIN ACTIVITY -->
+
+        <section
+            id="adminActivity"
+            class="dashboard-section hidden">
+
+            <div class="section-intro">
+
+                <div>
+
+                    <span class="panel-kicker">
+                        TRANSPARENCY
+                    </span>
+
+                    <h1>
+                        AI Audit Trail
+                    </h1>
+
+                    <p>
+                        Every workforce decision is recorded.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="timeline"
+                class="timeline">
+
+            </div>
+
+        </section>
+
+    </main>
+
+</section>
+
+
+
+<!-- =====================================================
+     TALENT DASHBOARD
+===================================================== -->
+
+<section
+    id="talentDashboard"
+    class="dashboard hidden">
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+
+            <div class="brand-icon">TB</div>
+
+            <div>
+                <strong>TalentBridge</strong>
+                <small>Talent Portal</small>
+            </div>
+
+        </div>
+
+
+        <div class="sidebar-menu">
+
+            <p class="menu-label">
+                TALENT PORTAL
+            </p>
+
+
+            <button
+                class="side-btn active"
+                onclick="talentSection('home', this)">
+                <span>⌂</span>
+                My Dashboard
+            </button>
+
+
+            <button
+                class="side-btn"
+                onclick="talentSection('projects', this)">
+                <span>◈</span>
+                Projects
+            </button>
+
+
+            <button
+                class="side-btn"
+                onclick="talentSection('applications', this)">
+                <span>✓</span>
+                My Applications
+            </button>
+
+
+            <button
+                class="side-btn"
+                onclick="talentSection('profile', this)">
+                <span>♙</span>
+                My Profile
+            </button>
+
+
+            <button
+                class="side-btn"
+                onclick="openAgent()">
+                <span>✦</span>
+                AI Career Agent
+            </button>
+
+        </div>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="ai-status">
+
+                <div class="status-dot"></div>
+
+                <div>
+                    <strong>
+                        AI Career Agent
+                    </strong>
+
+                    <small>
+                        Ready to help
+                    </small>
+                </div>
+
+            </div>
+
+
+            <button
+                class="logout-btn"
+                onclick="logout()">
+                ↪ Logout
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div>
+
+                <span class="page-kicker">
+                    TALENT PORTAL
+                </span>
+
+                <h2 id="talentPageTitle">
+                    My Dashboard
+                </h2>
+
+            </div>
+
+
+            <div class="top-actions">
+
+                <div
+                    class="notification"
+                    onclick="showNotifications()">
+                    🔔
+                    <span>2</span>
+                </div>
+
+
+                <div class="admin-profile">
+
+                    <div
+                        class="avatar"
+                        id="talentAvatar">
+                        TA
+                    </div>
+
+                    <div>
+
+                        <strong id="talentHeaderName">
+                            Talent
+                        </strong>
+
+                        <small>
+                            Available Professional
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- TALENT HOME -->
+
+        <section
+            id="talentHome"
+            class="dashboard-section">
+
+            <div class="welcome-banner">
+
+                <div>
+
+                    <div class="ai-badge light">
+                        ✦ AI CAREER MATCHING
+                    </div>
+
+                    <h1>
+                        Welcome,
+                        <span id="talentWelcomeName">
+                            Talent
+                        </span>
+                    </h1>
+
+                    <p>
+                        Your skills can become the missing
+                        capability in the right project.
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="primary-btn"
+                    onclick="talentSection('projects')">
+                    Explore Projects →
+                </button>
+
+            </div>
+
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon purple">
+                        ✦
+                    </div>
+
+                    <div>
+                        <span>AI Match Score</span>
+                        <strong>94%</strong>
+                        <small class="positive">
+                            Excellent
+                        </small>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon teal">
+                        ◈
+                    </div>
+
+                    <div>
+                        <span>Open Projects</span>
+                        <strong>12</strong>
+                        <small>
+                            4 match your skills
+                        </small>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon orange">
+                        ✓
+                    </div>
+
+                    <div>
+                        <span>Applications</span>
+                        <strong id="applicationCount">
+                            0
+                        </strong>
+                        <small>
+                            Active
+                        </small>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon red">
+                        ♙
+                    </div>
+
+                    <div>
+                        <span>Availability</span>
+                        <strong>Now</strong>
+                        <small class="positive">
+                            Available
+                        </small>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-grid">
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <span class="panel-kicker">
+                                AI RECOMMENDATION
+                            </span>
+
+                            <h3>
+                                Best Match For You
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="recommendation-card">
+
+                        <div class="recommendation-icon">
+                            ✦
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Banking AI Platform
+                            </h3>
+
+                            <p>
+                                Backend Developer
+                            </p>
+
+                            <div class="talent-tags">
+                                <span>Python</span>
+                                <span>FastAPI</span>
+                                <span>AWS</span>
+                            </div>
+
+                        </div>
+
+                        <strong class="big-match">
+                            94%
+                        </strong>
+
+                    </div>
+
+
+                    <button
+                        class="primary-btn full-btn"
+                        onclick="openProjectDetails('Banking AI Platform')">
+                        VIEW PROJECT →
+                    </button>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <span class="panel-kicker">
+                                AI CAREER AGENT
+                            </span>
+
+                            <h3>
+                                Need help?
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+
+                    <p class="muted">
+                        Ask the AI agent about projects,
+                        skill matching or interviews.
+                    </p>
+
+
+                    <button
+                        class="primary-btn full-btn"
+                        onclick="openAgent()">
+                        ✦ TALK TO AI AGENT
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- TALENT PROJECTS -->
+
+        <section
+            id="talentProjects"
+            class="dashboard-section hidden">
+
+            <div class="section-intro">
+
+                <div>
+
+                    <span class="panel-kicker">
+                        OPPORTUNITIES
+                    </span>
+
+                    <h1>
+                        Available Projects
+                    </h1>
+
+                    <p>
+                        Projects where your skills may match.
+                    </p>
+
+                </div>
+
+
+                <div class="search-box">
+
+                    🔎
+
+                    <input
+                        id="projectSearch"
+                        oninput="searchProjects()"
+                        placeholder="Search projects...">
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="talentProjectList"
+                class="project-grid">
+
+            </div>
+
+        </section>
+
+
+
+        <!-- TALENT APPLICATIONS -->
+
+        <section
+            id="talentApplications"
+            class="dashboard-section hidden">
+
+            <div class="section-intro">
+
+                <div>
+
+                    <span class="panel-kicker">
+                        YOUR APPLICATIONS
+                    </span>
+
+                    <h1>
+                        My Applications
+                    </h1>
+
+                    <p>
+                        Track your project applications and interviews.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="applicationsList"
+                class="application-list">
+
+            </div>
+
+        </section>
+
+
+
+        <!-- TALENT PROFILE -->
+
+        <section
+            id="talentProfile"
+            class="dashboard-section hidden">
+
+            <div class="section-intro">
+
+                <div>
+
+                    <span class="panel-kicker">
+                        PROFESSIONAL PROFILE
+                    </span>
+
+                    <h1>
+                        My Skill Profile
+                    </h1>
+
+                    <p>
+                        Your structured workforce profile.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="profileCard"
+                class="profile-dashboard-card">
+
+            </div>
+
+        </section>
+
+    </main>
+
+</section>
+
+
+
+<!-- =====================================================
+     PROJECT MODAL
+===================================================== -->
+
+<div
+    id="projectModal"
+    class="modal hidden">
+
+    <div class="modal-card">
+
+        <button
+            class="modal-close"
+            onclick="closeProjectModal()">
+            ×
+        </button>
+
+
+        <div class="ai-badge">
+            ✦ PROJECT DEMAND
+        </div>
+
+
+        <h2>
+            Create New Project
+        </h2>
+
+        <p>
+            Define the capabilities your project requires.
+        </p>
+
+
+        <form onsubmit="createProject(event)">
+
+            <label>Project Name</label>
+
+            <input
+                id="projectName"
+                required
+                placeholder="e.g. Healthcare AI Platform">
+
+
+            <label>Required Skills</label>
+
+            <input
+                id="projectSkills"
+                required
+                placeholder="Python, AWS, React">
+
+
+            <label>Team Size</label>
+
+            <input
+                id="projectTeam"
+                type="number"
+                min="1"
+                value="5"
+                required>
+
+
+            <button class="primary-btn full-btn">
+                CREATE & ANALYZE WITH AI →
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     AI ANALYSIS MODAL
+===================================================== -->
+
+<div
+    id="aiModal"
+    class="modal hidden">
+
+    <div class="modal-card ai-modal-card">
+
+        <button
+            class="modal-close"
+            onclick="closeAIModal()">
+            ×
+        </button>
+
+
+        <div class="ai-animation">
+            ✦
+        </div>
+
+
+        <span class="panel-kicker">
+            AI WORKFORCE ORCHESTRATOR
+        </span>
+
+
+        <h2 id="aiTitle">
+            Analyzing workforce capacity...
+        </h2>
+
+
+        <div class="ai-steps">
+
+            <div class="ai-step">
+                <span>✓</span>
+                Analyzing project requirements
+            </div>
+
+            <div class="ai-step">
+                <span>✓</span>
+                Checking current workforce
+            </div>
+
+            <div class="ai-step">
+                <span>✓</span>
+                Calculating skill gaps
+            </div>
+
+            <div class="ai-step">
+                <span>✓</span>
+                Matching available talent
+            </div>
+
+            <div class="ai-step">
+                <span>✓</span>
+                Generating staffing recommendation
+            </div>
+
+        </div>
+
+
+        <div
+            id="aiResult"
+            class="ai-result">
+        </div>
+
+
+        <button
+            class="primary-btn full-btn"
+            onclick="closeAIModal()">
+            VIEW VERIFIED OUTCOME
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     PROJECT DETAILS MODAL
+===================================================== -->
+
+<div
+    id="projectDetailsModal"
+    class="modal hidden">
+
+    <div class="modal-card">
+
+        <button
+            class="modal-close"
+            onclick="closeProjectDetails()">
+            ×
+        </button>
+
+
+        <div class="ai-badge">
+            ✦ AI PROJECT MATCH
+        </div>
+
+
+        <h2 id="detailsProjectName">
+            Banking AI Platform
+        </h2>
+
+
+        <p>
+            Build a scalable AI-powered banking platform.
+        </p>
+
+
+        <div class="detail-grid">
+
+            <div>
+                <span>Required Skills</span>
+                <strong>
+                    Python, FastAPI, AWS, React
+                </strong>
+            </div>
+
+            <div>
+                <span>Team Size</span>
+                <strong>8 members</strong>
+            </div>
+
+            <div>
+                <span>Duration</span>
+                <strong>6 months</strong>
+            </div>
+
+            <div>
+                <span>Your AI Match</span>
+                <strong class="match-green">
+                    94%
+                </strong>
+            </div>
+
+        </div>
+
+
+        <div class="ai-result">
+
+            ✦ AI Agent:
+            Your skills strongly match this project's
+            backend capability requirement.
+
+        </div>
+
+
+        <button
+            class="primary-btn full-btn"
+            onclick="applyToProject()">
+            APPLY TO PROJECT →
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     INTERVIEW MODAL
+===================================================== -->
+
+<div
+    id="interviewModal"
+    class="modal hidden">
+
+    <div class="modal-card interview-card">
+
+        <button
+            class="modal-close"
+            onclick="closeInterview()">
+            ×
+        </button>
+
+
+        <div class="interview-header">
+
+            <div class="ai-animation">
+                ✦
+            </div>
+
+            <div>
+
+                <span class="panel-kicker">
+                    AI INTERVIEW AGENT
+                </span>
+
+                <h2>
+                    Technical Interview
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="interview-progress">
+
+            <div id="interviewProgressBar"></div>
+
+        </div>
+
+
+        <p
+            id="interviewQuestion"
+            class="interview-question">
+        </p>
+
+
+        <textarea
+            id="interviewAnswer"
+            placeholder="Type your answer here..."
+            rows="6">
+        </textarea>
+
+
+        <div class="interview-actions">
+
+            <button
+                class="outline-btn"
+                onclick="skipQuestion()">
+                Skip
+            </button>
+
+            <button
+                class="primary-btn"
+                onclick="submitInterviewAnswer()">
+                SUBMIT ANSWER →
+            </button>
+
+        </div>
+
+
+        <div
+            id="interviewFeedback"
+            class="interview-feedback hidden">
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     AI AGENT
+===================================================== -->
+
+<div
+    id="agentPanel"
+    class="agent-panel hidden">
+
+    <div class="agent-header">
+
+        <div>
+
+            <div class="agent-title">
+                <div class="agent-icon">✦</div>
+
+                <div>
+                    <strong>TalentBridge AI</strong>
+                    <small>Workforce Agent</small>
+                </div>
+            </div>
+
+        </div>
+
+
+        <button
+            onclick="closeAgent()">
+            ×
+        </button>
+
+    </div>
+
+
+    <div
+        id="agentMessages"
+        class="agent-messages">
+
+        <div class="agent-message ai">
+
+            <div class="message-icon">
+                ✦
+            </div>
+
+            <div>
+                Hi! I'm your TalentBridge AI Agent.
+                I can help with skill matching,
+                projects, interviews and workforce planning.
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="quick-prompts">
+
+        <button onclick="quickAgent('Show me projects')">
+            Projects
+        </button>
+
+        <button onclick="quickAgent('What are my skills?')">
+            My Skills
+        </button>
+
+        <button onclick="quickAgent('Start my interview')">
+            Interview
+        </button>
+
+        <button onclick="quickAgent('Find my best match')">
+            Best Match
+        </button>
+
+    </div>
+
+
+    <div class="agent-input">
+
+        <input
+            id="agentInput"
+            onkeydown="agentEnter(event)"
+            placeholder="Ask the AI agent...">
+
+        <button onclick="sendAgentMessage()">
+            →
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     NOTIFICATION MODAL
+===================================================== -->
+
+<div
+    id="notificationModal"
+    class="modal hidden">
+
+    <div class="modal-card">
+
+        <button
+            class="modal-close"
+            onclick="closeNotifications()">
+            ×
+        </button>
+
+
+        <div class="ai-badge">
+            🔔 NOTIFICATIONS
+        </div>
+
+
+        <h2>
+            Recent Updates
+        </h2>
+
+
+        <div class="notification-list">
+
+            <div class="notification-item">
+                <strong>
+                    AI match found
+                </strong>
+                <span>
+                    Your profile matches Banking AI Platform by 94%.
+                </span>
+            </div>
+
+
+            <div class="notification-item">
+                <strong>
+                    Interview available
+                </strong>
+                <span>
+                    Complete your technical interview.
+                </span>
+            </div>
+
+
+            <div class="notification-item">
+                <strong>
+                    Workforce gap detected
+                </strong>
+                <span>
+                    AWS capability requires attention.
+                </span>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     TOAST
+===================================================== -->
+
+<div
+    id="toast"
+    class="toast">
+</div>
+
+
+<script src="app.js"></script>
+
+</body>
+</html>
